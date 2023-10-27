@@ -11,4 +11,4 @@ jobs:
 
     steps:
     - name: Test output
-      run: echo "TEST_VAR value is $TEST_VAR"
+      run: echo "TEST_VAR value is ${{ env.master.TEST_VAR }}"
