@@ -11,7 +11,14 @@ jobs:
     environment: master
 
     steps:
-    - name: Test output
-      run: | 
-        echo "TEST_VAR value is ${{ vars.TEST_VAR }}"
-        echo "TEST_SECRET value is ${{ secrets.TEST_SECRET }}"
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.5
+      with:
+        ssh-private-key: ${{ secrets.SERVER_PRIVATE_KEY }}
+
+    - name: Deploy to VPS
+      run: |
+        ssh ${{ vars.SERVER_USER }}@${{ vars.SERVER_ADDRESS }} "cd learn-gh-actions && git pull origin main"
