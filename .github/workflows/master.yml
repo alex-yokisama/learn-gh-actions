@@ -21,4 +21,5 @@ jobs:
 
     - name: Deploy to VPS
       run: |
+        ssh-keyscan ${{ vars.SERVER_ADDRESS }} >> ~/.ssh/known_hosts
         ssh ${{ vars.SERVER_USER }}@${{ vars.SERVER_ADDRESS }} "cd learn-gh-actions && git pull origin main"
