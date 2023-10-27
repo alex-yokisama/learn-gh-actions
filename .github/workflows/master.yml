@@ -12,4 +12,6 @@ jobs:
 
     steps:
     - name: Test output
-      run: echo "TEST_VAR value is ${{ vars.TEST_VAR }}"
+      run: | 
+        echo "TEST_VAR value is ${{ vars.TEST_VAR }}"
+        echo "TEST_SECRET value is ${{ secrets.TEST_SECRET }}"
