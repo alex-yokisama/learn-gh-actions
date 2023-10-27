@@ -1,0 +1,14 @@
+name: Master Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Test output
+      run: echo "TEST_VAR value is $TEST_VAR"
